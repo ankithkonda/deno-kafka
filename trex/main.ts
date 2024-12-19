@@ -4,7 +4,7 @@ const kafka = new Kafka({
   clientId: 'extiction-alerts',
   brokers: ['kafka:9092'],
 })
-// funny group name
+
 
 const consumer = kafka.consumer({ groupId: 'about-to-be-extinct' })
 
