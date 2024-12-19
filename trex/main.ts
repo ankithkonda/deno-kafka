@@ -1,8 +1,29 @@
-export function add(a: number, b: number): number {
-  return a + b;
+import { Kafka } from 'kafkajs'
+
+const kafka = new Kafka({
+  clientId: 'extiction-alerts',
+  brokers: ['kafka:9092'],
+})
+// funny group name
+
+const consumer = kafka.consumer({ groupId: 'about-to-be-extinct' })
+
+const run = async () => {
+  // Consuming
+  await consumer.connect()
+  await consumer.subscribe({ topic: 'astroid-alerts', fromBeginning: true })
+
+  await consumer.run({
+    // deno-lint-ignore require-await
+    eachMessage: async ({ topic, partition, message }) => {
+      console.log({
+        topic,
+        partition,
+        offset: message.offset,
+        value: message.value.toString(),
+      })
+    },
+  })
 }
 
-// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
-if (import.meta.main) {
-  console.log("Add 2 + 3 =", add(2, 3));
-}
+run().catch(console.error)

@@ -1,0 +1,21 @@
+{
+  "version": "4",
+  "specifiers": {
+    "npm:kafkajs@^2.2.4": "2.2.4",
+    "npm:moment@^2.30.1": "2.30.1"
+  },
+  "npm": {
+    "kafkajs@2.2.4": {
+      "integrity": "sha512-j/YeapB1vfPT2iOIUn/vxdyKEuhuY2PxMBvf5JWux6iSaukAccrMtXEY/Lb7OvavDhOWME589bpLrEdnVHjfjA=="
+    },
+    "moment@2.30.1": {
+      "integrity": "sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how=="
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:kafkajs@^2.2.4",
+      "npm:moment@^2.30.1"
+    ]
+  }
+}
